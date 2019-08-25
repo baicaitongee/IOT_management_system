@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="app">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.14">
+    <root id="1">
+      <ServerVersion>3.25.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="book"/>
+    <table id="7" parent="2" name="book_style"/>
+    <table id="8" parent="2" name="borrow"/>
+    <table id="9" parent="2" name="group"/>
+    <table id="10" parent="2" name="migrate_version"/>
+    <table id="11" parent="2" name="reader"/>
+    <table id="12" parent="2" name="return_info"/>
+    <table id="13" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <column id="14" parent="6" name="id">
+      <Position>1</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="6" name="name">
+      <Position>2</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="16" parent="6" name="style_num">
+      <Position>3</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="17" parent="6" name="author">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|0s</DataType>
+    </column>
+    <column id="18" parent="6" name="count">
+      <Position>5</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="19" parent="6" name="available_count">
+      <Position>6</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="20" parent="6" name="price">
+      <Position>7</Position>
+      <DataType>FLOAT|0s</DataType>
+    </column>
+    <column id="21" parent="6" name="press">
+      <Position>8</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="22" parent="6" name="summary">
+      <Position>9</Position>
+      <DataType>VARCHAR(80)|0s</DataType>
+    </column>
+    <column id="23" parent="6" name="temperture">
+      <Position>10</Position>
+      <DataType>FLOAT|0s</DataType>
+    </column>
+    <column id="24" parent="6" name="humidity">
+      <Position>11</Position>
+      <DataType>FLOAT|0s</DataType>
+    </column>
+    <column id="25" parent="6" name="url">
+      <Position>12</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <index id="26" parent="6" name="sqlite_autoindex_book_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="27" parent="6">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_book_1</UnderlyingIndexName>
+    </key>
+    <key id="28" parent="6">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_book_1</UnderlyingIndexName>
+    </key>
+    <column id="29" parent="7" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="7" name="num">
+      <Position>2</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="31" parent="7" name="name">
+      <Position>3</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <index id="32" parent="7" name="ix_book_style_num">
+      <ColNames>num</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="33" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="34" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="8" name="reader_no">
+      <Position>2</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="36" parent="8" name="book_id">
+      <Position>3</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="37" parent="8" name="borrow_date">
+      <Position>4</Position>
+      <DataType>DATETIME|0s</DataType>
+    </column>
+    <column id="38" parent="8" name="return_date">
+      <Position>5</Position>
+      <DataType>DATETIME|0s</DataType>
+    </column>
+    <index id="39" parent="8" name="ix_borrow_reader_no">
+      <ColNames>reader_no</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="40" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="41" parent="8">
+      <ColNames>reader_no</ColNames>
+      <RefTableName>reader</RefTableName>
+      <RefColNames>no</RefColNames>
+    </foreign-key>
+    <foreign-key id="42" parent="8">
+      <ColNames>book_id</ColNames>
+      <RefTableName>book</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="43" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="9" name="room">
+      <Position>2</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="45" parent="9" name="id1">
+      <Position>3</Position>
+      <DataType>VARCHAR|0s</DataType>
+    </column>
+    <column id="46" parent="9" name="id2">
+      <Position>4</Position>
+      <DataType>VARCHAR|0s</DataType>
+    </column>
+    <column id="47" parent="9" name="id3">
+      <Position>5</Position>
+      <DataType>VARCHAR|0s</DataType>
+    </column>
+    <column id="48" parent="9" name="id4">
+      <Position>6</Position>
+      <DataType>VARCHAR|0s</DataType>
+    </column>
+    <column id="49" parent="9" name="id5">
+      <Position>7</Position>
+      <DataType>VARCHAR|0s</DataType>
+    </column>
+    <column id="50" parent="9" name="id6">
+      <Position>8</Position>
+      <DataType>VARCHAR|0s</DataType>
+    </column>
+    <index id="51" parent="9" name="sqlite_autoindex_group_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="52" parent="9">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_group_1</UnderlyingIndexName>
+    </key>
+    <key id="53" parent="9">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_group_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="54" parent="9">
+      <ColNames>room</ColNames>
+      <RefTableName>book</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="55" parent="9">
+      <ColNames>id2</ColNames>
+      <RefTableName>reader</RefTableName>
+      <RefColNames>no</RefColNames>
+    </foreign-key>
+    <foreign-key id="56" parent="9">
+      <ColNames>id3</ColNames>
+      <RefTableName>reader</RefTableName>
+      <RefColNames>no</RefColNames>
+    </foreign-key>
+    <foreign-key id="57" parent="9">
+      <ColNames>id4</ColNames>
+      <RefTableName>reader</RefTableName>
+      <RefColNames>no</RefColNames>
+    </foreign-key>
+    <foreign-key id="58" parent="9">
+      <ColNames>id5</ColNames>
+      <RefTableName>reader</RefTableName>
+      <RefColNames>no</RefColNames>
+    </foreign-key>
+    <foreign-key id="59" parent="9">
+      <ColNames>id6</ColNames>
+      <RefTableName>reader</RefTableName>
+      <RefColNames>no</RefColNames>
+    </foreign-key>
+    <column id="60" parent="10" name="repository_id">
+      <Position>1</Position>
+      <DataType>VARCHAR(250)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="10" name="repository_path">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <column id="62" parent="10" name="version">
+      <Position>3</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <index id="63" parent="10" name="sqlite_autoindex_migrate_version_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>repository_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="64" parent="10">
+      <ColNames>repository_id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_migrate_version_1</UnderlyingIndexName>
+    </key>
+    <column id="65" parent="11" name="no">
+      <Position>1</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="11" name="name">
+      <Position>2</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="67" parent="11" name="gender">
+      <Position>3</Position>
+      <DataType>VARCHAR(10)|0s</DataType>
+    </column>
+    <column id="68" parent="11" name="kind">
+      <Position>4</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="69" parent="11" name="password">
+      <Position>5</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="70" parent="11" name="phone">
+      <Position>6</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="71" parent="11" name="grade">
+      <Position>7</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="72" parent="11" name="department">
+      <Position>8</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="73" parent="11" name="longtitude">
+      <Position>9</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="74" parent="11" name="latitude">
+      <Position>10</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="75" parent="11" name="IDcard">
+      <Position>11</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <index id="76" parent="11" name="sqlite_autoindex_reader_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>no</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="77" parent="11">
+      <ColNames>no</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_reader_1</UnderlyingIndexName>
+    </key>
+    <key id="78" parent="11">
+      <ColNames>no</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_reader_1</UnderlyingIndexName>
+    </key>
+    <column id="79" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="80" parent="12" name="reader_no">
+      <Position>2</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="81" parent="12" name="book_id">
+      <Position>3</Position>
+      <DataType>VARCHAR(40)|0s</DataType>
+    </column>
+    <column id="82" parent="12" name="borrow_date">
+      <Position>4</Position>
+      <DataType>DATETIME|0s</DataType>
+    </column>
+    <column id="83" parent="12" name="return_date">
+      <Position>5</Position>
+      <DataType>DATETIME|0s</DataType>
+    </column>
+    <column id="84" parent="12" name="overday">
+      <Position>6</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <index id="85" parent="12" name="ix_return_info_reader_no">
+      <ColNames>reader_no</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="86" parent="12">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="87" parent="12">
+      <ColNames>reader_no</ColNames>
+      <RefTableName>reader</RefTableName>
+      <RefColNames>no</RefColNames>
+    </foreign-key>
+    <foreign-key id="88" parent="12">
+      <ColNames>book_id</ColNames>
+      <RefTableName>book</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="89" parent="13" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="90" parent="13" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="91" parent="13" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="92" parent="13" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="93" parent="13" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+  </database-model>
+</dataSource>

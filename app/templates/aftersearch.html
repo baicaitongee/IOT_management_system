@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="pure-menu pure-menu-horizontal"id="reader-menu">
+
+    <ul class="pure-menu-list" >
+        <li class="pure-menu-item"><a href="{{ url_for('borrowinfo') }}" class="pure-menu-link">我的库室</a> </li>
+        <li class="pure-menu-item"><a href="{{ url_for('returninfo') }}" class="pure-menu-link">我的归还</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('myinfo') }}" class="pure-menu-link">我的信息</a></li>
+    </ul>
+<table class="pure-table">
+<thead>
+<tr>
+    <th>编号</th>
+    <th>库室名</th>
+    <th>所用小组</th>
+    <th>空间</th>
+    <th>可借数量</th>
+    <th>维护员</th>
+    <th>负责人</th>
+    <th>摘要</th>
+    <th>温度</th>
+    <th>湿度</th>
+    {% if reader.kind!=0 %}
+        <th>借否</th>
+    {% endif %}
+</tr>
+</thead>
+<tbody>
+{% for book in books %}
+<tr align="center">
+<td>{{ book.id }}</td>
+<td>{{ book.name }}</td>
+<td>{{ book.style_num }}</td>
+<td>{{ book.count}}</td>
+<td>{{ book.available_count }}</td>
+<td>{{ book.price }}</td>
+<td>{{ book.press }}</td>>
+<td>{{ book.summary }}</td>
+<td>{{ book.temperture }}</td>
+<td>{{ book.humidity }}</td>
+{% if reader.kind!=0 %}
+
+    <td><a href="/borrow/{{ book.id }}">借库室</a></td>
+
+
+{% endif %}
+</tr>
+</tbody>
+
+{% endfor %}
+
+</table>
+    </div>
+{% endblock %}
