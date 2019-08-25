@@ -1,4 +1,3 @@
-# book-management-system
-基于Flask，Sqlite，Jinja2 的小型图书管理系统
+基于Flask，Sqlite，Jinja2 的物联网营区管理系统
 
 
